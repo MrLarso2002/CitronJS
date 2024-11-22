@@ -31,7 +31,7 @@ CitronJS.addEntry = function (file, src) {
     CitronJS.DyCache[entry] = { file: xmlDocAsString, src: src };
 
     // save the sample names and their corresponding entriesS
-    const exportSamples = file.getElementsByTagName('export');
+    const exportSamples = Array.from(file.getElementsByTagName('export'));
     for (let i = 0; i < exportSamples.length; i++) {
         const exportSample = exportSamples[i];
         
@@ -55,7 +55,7 @@ CitronJS.handleImports = async function (src) {
     
     if (CitronJS.isSyntaxValid(xmlDoc)) {
         
-        const exports = xmlDoc.getElementsByTagName('export');
+        const exports = Array.from(xmlDoc.getElementsByTagName('export'));
         for (let i = 0; i < exports.length; i++) {
             const expElement = exports[i];
             const sampleName = expElement.getAttribute('sample');
@@ -63,7 +63,7 @@ CitronJS.handleImports = async function (src) {
             for (var key in CitronJS.ObCache) {
                 if (key == sampleName) {
                     expElement.parentNode.removeChild(expElement);
-                    const samples = xmlDoc.getElementsByTagName('sample');
+                    const samples = Array.from(xmlDoc.getElementsByTagName('sample'));
                     for (let i = 0; i < samples.length; i++) {
                         const sample = samples[i];
                         if (sample.getAttribute('name') == sampleName) {
@@ -108,7 +108,7 @@ CitronJS.handleSample = async function (sampleNode) {
         
 
         
-        const exportElements = xmlDoc.getElementsByTagName('export');
+        const exportElements = Array.from(xmlDoc.getElementsByTagName('export'));
         let exportEl;
         for (let i = 0; i < exportElements.length; i++) {
             const exportElement = exportElements[i];
@@ -118,7 +118,7 @@ CitronJS.handleSample = async function (sampleNode) {
         }
 
         
-        const samples = xmlDoc.getElementsByTagName('sample');
+        const samples = Array.from(xmlDoc.getElementsByTagName('sample'));
         let targetSample;
         for (let i = 0; i < samples.length; i++) {
             const sample = samples[i];
@@ -129,7 +129,7 @@ CitronJS.handleSample = async function (sampleNode) {
         let FinalString = targetSample;
         // variable check
         if (exportEl.getElementsByTagName('var')) {
-            const ExportVars = exportEl.getElementsByTagName('var');
+            const ExportVars = Array.from(exportEl.getElementsByTagName('var'));
             for (let i = 0; i < ExportVars.length; i++) {
                 const ExportVar = ExportVars[i];
                 const varName = ExportVar.getAttribute('var');
