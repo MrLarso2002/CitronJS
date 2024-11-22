@@ -177,7 +177,7 @@ CitronJS.clearCache = function () {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const imports = document.head.getElementsByTagName('c-import');
+    const imports = Array.from(document.head.getElementsByTagName('c-import'));
     for (let i = 0; i < imports.length; i++) {
         const e = imports[i];
         if (e.hasAttribute('src')) {
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    const samples = document.getElementsByTagName('sample');
+    const samples = Array.from(document.getElementsByTagName('sample'));
     for (let i = 0; i < samples.length; i++) {
         const b = samples[i];
         if (b.hasAttribute('name')) {
