@@ -210,7 +210,7 @@ const callback = async function(mutationsList, observer) {
                         const nodes = Array.from(node.querySelectorAll('sample'));
                         for(let elem of nodes) {
                             if (elem.hasAttribute('name')) {
-                                CitronJS.handleSample(node);
+                                CitronJS.handleSample(elem);
                             }
                         }
                         
