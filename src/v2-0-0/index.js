@@ -206,10 +206,14 @@ const callback = async function(mutationsList, observer) {
                         if (node.hasAttribute('src')) {
                             CitronJS.handleImports(node.getAttribute('src'));
                         }
-                    } else if (node.tagName.toLowerCase() == 'sample') {
-                        if (node.hasAttribute('name')) {
-                            CitronJS.handleSample(node);
+                    } else  {
+                        const nodes = Array.from(node.querySelectorAll('sample'));
+                        for(let elem of nodes) {
+                            if (elem.hasAttribute('name')) {
+                                CitronJS.handleSample(node);
+                            }
                         }
+                        
                     }
                 }
 
