@@ -150,11 +150,6 @@ CitronJS.handleSample = async function (sampleNode) {
             sampleNode.innerHTML = convertXmlToHtmlSelfClosingTags(FinalString);
         } else {
             sampleNode.outerHTML = convertXmlToHtmlSelfClosingTags(FinalString);
-            console.log(sampleNode);
-            let allNodes = document.body.getElementsByTagName('*');
-            let targetNode = allNodes[allNodes.length - 1];
-            console.log(targetNode);
-            return sampleNode;
         }
         
     }
